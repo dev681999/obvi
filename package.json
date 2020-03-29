@@ -35,8 +35,10 @@
     "@webcomponents/webcomponentsjs": "2.0.0-beta.2"
   },
   "dependencies": {
+    "@polymer/paper-behaviors": "^3.0.0-pre.18",
     "@polymer/polymer": "^3.0.0",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "@polymer/paper-behaviors": "^3.0.0-pre.18"
+    "lamejs": "^1.2.0",
+    "lz-string": "^1.4.4"
   }
 }
