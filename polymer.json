@@ -3,20 +3,22 @@
   "shell": "voice-button.js",
   "fragments": [],
   "sources": [
-   "voice-button.js",
-   "package.json"
+    "voice-button.js",
+    "package.json"
   ],
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/**",
     "node_modules/@polmyer/polymer/**",
-    "node_modules/@polymer/paper-behaviors/**",
-    "node_modules/lz-string/**",
-    "node_modules/lamejs/**"
+    "node_modules/@polymer/paper-behaviors/**"
   ],
-  "builds": [
-    { "preset": "es5-bundled" },
-    { "preset": "es6-bundled" }
-  ],
+  "builds": [{
+    "name": "default",
+    "js": {"minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }, {
+    "preset": "es6-unbundled"
+  }],
   "moduleResolution": "node",
   "npm": true
 }

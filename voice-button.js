@@ -20,8 +20,6 @@
 
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-behaviors/paper-ripple-behavior.js';
-import 'lamejs';
-import 'lz-string';
 
 // var lamejs = require("lamejs");
 // var LZString = require('lz-string');
@@ -1240,132 +1238,11 @@ class VoiceButton extends PolymerElement {
 
         console.log("got arrayBuffer")
 
-        function encodeMono(channels, sampleRate, samples) {
-            var buffer = [];
-            var mp3enc = new lamejs.Mp3Encoder(channels, sampleRate, 128);
-            var remaining = samples.length;
-            var maxSamples = 1152;
-            for (var i = 0; remaining >= maxSamples; i += maxSamples) {
-                var mono = samples.subarray(i, i + maxSamples);
-                var mp3buf = mp3enc.encodeBuffer(mono);
-                if (mp3buf.length > 0) {
-                    buffer.push(new Int8Array(mp3buf));
-                }
-                remaining -= maxSamples;
-            }
-            var d = mp3enc.flush();
-            if (d.length > 0) {
-                buffer.push(new Int8Array(d));
-            }
-
-            console.log('done encoding, size=', buffer.length);
-
-            return new Blob(buffer, { type: 'audio/mp3' });
-        }
-
-        var wav = lamejs.WavHeader.readHeader(new DataView(buffer));
-        console.log('wav:', wav);
-        var samples = new Int16Array(buffer, wav.dataOffset, wav.dataLen / 2);
-
-        var mp3Blob = encodeMono(wav.channels, wav.sampleRate, samples);
-
         this.showLoader();
-        this.blobToBase64(mp3Blob, data => {
-            /* let postBody = `{
-                "config": {
-                  "encoding": "LINEAR16",
-                  "languageCode": "en-US",
-                  "enableAutomaticPunctuation": true,
-                  "maxAlternatives": ${this.alternatives},
-                  "enableWordTimeOffsets": false,
-                  "speechContexts": [
-                    {
-                      "phrases": [
-                        "${this.context}"
-                      ]
-                    }
-                  ]
-                },
-                "audio": {
-                  "content": "${data}"
-                }
-              }`; */
-            /* var wav = lamejs.WavHeader.readHeader(new DataView(data));
-            console.log('wav:', wav);
-            var samples = new Int16Array(audioData, wav.dataOffset, wav.dataLen / 2);
-            function encodeMono(channels, sampleRate, samples) {
-                var buffer = [];
-                var mp3enc = new lamejs.Mp3Encoder(channels, sampleRate, 128);
-                var remaining = samples.length;
-                var maxSamples = 1152;
-                for (var i = 0; remaining >= maxSamples; i += maxSamples) {
-                    var mono = samples.subarray(i, i + maxSamples);
-                    var mp3buf = mp3enc.encodeBuffer(mono);
-                    if (mp3buf.length > 0) {
-                        buffer.push(new Int8Array(mp3buf));
-                    }
-                    remaining -= maxSamples;
-                }
-                var d = mp3enc.flush();
-                if (d.length > 0) {
-                    buffer.push(new Int8Array(d));
-                }
-
-                console.log('done encoding, size=', buffer.length);
-            } */
-
-
-            let postBody = `${data}`;
-
-            try {
-                var string = postBody;
-                console.log("Size of sample is: " + string.length);
-                var compressed = LZString.compress(string);
-                console.log("Size of compressed plain sample is: " + compressed.length);
-                compressed = LZString.compressToEncodedURIComponent(string);
-                console.log("Size of compressed uri sample is: " + compressed.length);
-                // string = LZString.decompress(compressed);
-                // console.log("Sample is: " + string);
-                // var output = pako.inflate(postBody, { to: "string" })
-                // console.log("zip", output.length, "&", postBody.length);
-                postBody = compressed;
-            } catch (error) {
-                console.log("zip error", error)
-            }
-
-            this.hideLoader();
-            this.dispatchEvent(new CustomEvent('onSpeech', {
-                detail: postBody,
-            }));
-
-            /* 
-            console.log('vb rec tokne', postBody);
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", `${this.cloudSpeechUrl}/assessment/${this.assessmentToken}?reassess=${this.reassess}&scoreidx=${this.scoreidx}`, true);
-            // xhr.open("POST", this.cloudSpeechUrl + 'api/speech:recognize?key=' + this.cloudSpeechApiKey + '&lesson=' + this.lesson + '&recToken=' + this.recToken, true);
-            xhr.setRequestHeader("Authorization", "Bearer " + this.recordingToken);
-            
-            xhr.onload = data => {
-                // Request finished. Do processing here.
-                // hide the dot loader
-                this.hideLoader();
-                console.log(xhr.responseText);
-                let response = JSON.parse(xhr.responseText);
-
-                if (response) {
-                    console.log('vb res:', response)
-                    this.dispatchEvent(new CustomEvent('onSpeech', {
-                        detail: response,
-                    }));
-                }
-            };
-
-            xhr.onerror = () => {
-                console.error('Error occurred during Cloud Speech AJAX request.');
-            };
-
-            xhr.send(postBody); */
-        });
+        this.dispatchEvent(new CustomEvent('onSpeech', {
+            detail: buffer,
+        }));
+        this.hideLoader();
     }
 
     startListening() {

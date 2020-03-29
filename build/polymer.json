@@ -12,33 +12,26 @@
     "bower_components/webcomponentsjs/*.js",
     "node_modules/@webcomponents/webcomponentsjs/**",
     "node_modules/@polmyer/polymer/**",
-    "node_modules/@polymer/paper-behaviors/**",
-    "node_modules/lz-string/**",
-    "node_modules/lamejs/**"
+    "node_modules/@polymer/paper-behaviors/**"
   ],
   "builds": [
     {
-      "name": "es5-bundled",
+      "name": "default",
       "js": {
-        "minify": true,
-        "compile": "es5",
-        "transformModulesToAmd": true
+        "minify": true
       },
       "css": {
         "minify": true
       },
       "html": {
         "minify": true
-      },
-      "bundle": true,
-      "addServiceWorker": true,
-      "addPushManifest": false,
-      "preset": "es5-bundled"
+      }
     },
     {
-      "name": "es6-bundled",
+      "name": "es6-unbundled",
       "browserCapabilities": [
-        "es2015"
+        "es2015",
+        "push"
       ],
       "js": {
         "minify": true,
@@ -51,10 +44,10 @@
       "html": {
         "minify": true
       },
-      "bundle": true,
+      "bundle": false,
       "addServiceWorker": true,
-      "addPushManifest": false,
-      "preset": "es6-bundled"
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
     }
   ],
   "npm": true,
