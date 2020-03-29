@@ -22,7 +22,7 @@ import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
 import '../@polymer/paper-behaviors/paper-ripple-behavior.js';
 
 var lamejs = require("lamejs");
-var LZString = require('lz-string.js');
+var LZString = require('lz-string');
 
 // import './lame.js';
 // import './lz-string.js';
