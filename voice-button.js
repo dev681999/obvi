@@ -18,11 +18,13 @@
   then delete this comment!
 */
 
-import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
-import '../@polymer/paper-behaviors/paper-ripple-behavior.js';
+import { PolymerElement } from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-behaviors/paper-ripple-behavior.js';
+import 'lamejs';
+import 'lz-string';
 
-var lamejs = require("lamejs");
-var LZString = require('lz-string');
+// var lamejs = require("lamejs");
+// var LZString = require('lz-string');
 
 // import './lame.js';
 // import './lz-string.js';

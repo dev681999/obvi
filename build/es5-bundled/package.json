@@ -8,10 +8,10 @@
     "polymer",
     "button"
   ],
-  "repository": "https://github.com/googlecreativelab/obvi",
-  "homepage": "https://googlecreativelab.github.io/obvi/",
-  "name": "obvi",
-  "version": "3.0.0",
+  "repository": "https://github.com/dev681999/obvi",
+  "homepage": "https://dev681999.github.io/obvi/",
+  "name": "obvi-component",
+  "version": "4.0.0",
   "main": "index.js",
   "author": "Nick Jonas <njonas@google.com>",
   "license": "Apache-2.0",
@@ -35,8 +35,10 @@
     "@webcomponents/webcomponentsjs": "2.0.0-beta.2"
   },
   "dependencies": {
+    "@polymer/paper-behaviors": "^3.0.0-pre.18",
     "@polymer/polymer": "^3.0.0",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "@polymer/paper-behaviors": "^3.0.0-pre.18"
+    "lamejs": "^1.2.0",
+    "lz-string": "^1.4.4"
   }
 }

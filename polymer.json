@@ -9,7 +9,9 @@
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/**",
     "node_modules/@polmyer/polymer/**",
-    "node_modules/@polymer/paper-behaviors/**"
+    "node_modules/@polymer/paper-behaviors/**",
+    "node_modules/lz-string/**",
+    "node_modules/lamejs/**"
   ],
   "builds": [
     { "preset": "es5-bundled" },

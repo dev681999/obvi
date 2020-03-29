@@ -1,0 +1,44 @@
+{
+  "description": "One Button for Voice Input",
+  "keywords": [
+    "voice",
+    "speech-recognition",
+    "speech recognition",
+    "asr",
+    "polymer",
+    "button"
+  ],
+  "repository": "https://github.com/dev681999/obvi",
+  "homepage": "https://dev681999.github.io/obvi/",
+  "name": "obvi-component",
+  "version": "4.0.0",
+  "main": "index.js",
+  "author": "Nick Jonas <njonas@google.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "preversion": "npm test",
+    "version": "npm run build && git add -A build",
+    "postversion": "git push && git push --tags",
+    "start": "polymer serve --protocol h2 --open",
+    "build": "polymer build --js-minify --css-minify --bundle --name dist --entrypoint voice-button.js",
+    "test": "polymer test"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.7.2",
+    "wct-browser-legacy": "^0.0.1-pre.11"
+  },
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0",
+    "@webcomponents/webcomponentsjs": "2.0.0-beta.2"
+  },
+  "dependencies": {
+    "@polymer/paper-behaviors": "^3.0.0-pre.18",
+    "@polymer/polymer": "^3.0.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "lamejs": "^1.2.0",
+    "lz-string": "^1.4.4"
+  }
+}
