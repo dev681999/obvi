@@ -8,10 +8,10 @@
     "polymer",
     "button"
   ],
-  "repository": "https://github.com/googlecreativelab/obvi",
-  "homepage": "https://googlecreativelab.github.io/obvi/",
+  "repository": "https://github.com/dev681999/obvi",
+  "homepage": "https://dev681999.github.io/obvi/",
   "name": "obvi-component",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "index.js",
   "author": "Nick Jonas <njonas@google.com>",
   "license": "Apache-2.0",
